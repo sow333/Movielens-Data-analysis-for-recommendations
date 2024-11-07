@@ -1,0 +1,14 @@
+
+# 4. Task: Serve Recommendations
+def serve_recommendations():
+    # Simulating a service that provides recommendations based on stored model
+    print("Recommendations are ready to be served!")
+    with open('/tmp/predictions.txt') as f:
+        for line in f.readlines()[:10]:
+            print(line)
+
+serve_task = PythonOperator(
+    task_id='serve_recommendations',
+    python_callable=serve_recommendations,
+    dag=dag,
+)
